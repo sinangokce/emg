@@ -1,18 +1,4 @@
-#include <ros/ros.h>
-
-#include "std_msgs/String.h"
-//#include "std_msgs/Float32.h"
-//#include "std_msgs/Int16.h"
-//#include "sensor_msgs/JointState.h"
-
-#include <iostream>
-#include <string>
-#include <signal.h>
-#include <termios.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <vector>
-
+#include <emg/emg.h>
 using namespace std;
 
 #define DOF_JOINTS 16
@@ -106,21 +92,6 @@ using namespace std;
 #define KEYCODE_slash 0x2F
 #define KEYCORD_question 0x3F
 
-class AHKeyboard
-{
- public:
-  AHKeyboard();
-  void keyLoop();
-  void printUsage();
-
- private:
-  ros::NodeHandle nh_;
-  int count_;
-  float edit_;
-  ros::Publisher cmd_pub_;
-  ros::Publisher vel_pub_;
-};
-
 AHKeyboard::AHKeyboard():
     count_(0),
     edit_(0.0)
@@ -140,19 +111,6 @@ void quit(int sig)
   tcsetattr(kfd, TCSANOW, &cooked);
   ros::shutdown();
   exit(0);
-}
-
-
-int main(int argc, char** argv)
-{
-  ros::init(argc, argv, "allegro_hand_emg_grasp_type");
-  AHKeyboard allegro_hand_keyboard_cmd;
-
-  signal(SIGINT,quit);
-
-  allegro_hand_keyboard_cmd.keyLoop();
-
-  return(0);
 }
 
 void AHKeyboard::printUsage() {

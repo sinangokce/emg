@@ -41,7 +41,7 @@ include_directories(
 ## Declare a cpp executable
 #add_executable(allegro_hand_keyboard_node src/allegro_hand_keyboard.cpp)
 
-add_executable(emg src/emg.cpp src/emg_node.cpp)
+add_executable(emg src/emg.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(emg 
