@@ -187,7 +187,7 @@ void AHKeyboard::keyLoop()
         break;
 
 
-      case KEYCODE_y:
+      /*case KEYCODE_y:
         ROS_DEBUG("y_key: Little Tactile");
         ss << "little_tactile";
         dirty = true;
@@ -256,7 +256,7 @@ void AHKeyboard::keyLoop()
         dirty == false;
         msg.data = ss.str();
         vel_pub_.publish(msg);
-        break;        
+        break;*/        
     }
 
     if(dirty ==true)
